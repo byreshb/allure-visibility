@@ -17,8 +17,28 @@ question without running the suite at all.
 
 ## Status
 
-Early scaffolding. This README and the modules below will fill in as the delivery plan
-progresses; the annotations, extensions and audit tooling described above aren't implemented yet.
+The four label annotations and `AvlConfig` are implemented in `avl-core`. The JUnit 5 extension,
+TestNG listener, static audit and Maven plugin described above aren't implemented yet; this
+README will fill in as the delivery plan progresses.
+
+## Reference
+
+Four annotations, each usable on a test class, a test method, or both — a method-level
+annotation overrides the same annotation at class level, which is the default for a method that
+declares none:
+
+| Annotation     | Value               | Attached label |
+| -------------- | -------------------- | --------------- |
+| `@Layer`       | `TestLayer` (`UNIT`, `INTEGRATION`, `API`, `UI`, `E2E`) | `layer` |
+| `@Team`        | free text, non-blank | `team` |
+| `@Priority`    | `TestPriority` (`P0`–`P3`) | `priority` |
+| `@Component`   | free text, non-blank | `component` |
+
+`@Priority` is deliberately distinct from Allure's own `@Severity`: severity is technical impact,
+priority is business urgency. See [docs/design.md](docs/design.md) for why.
+
+Configuration (`avl.required.labels`, `avl.enforcement`) is documented in
+[docs/configuration.md](docs/configuration.md).
 
 ## Building and testing
 

@@ -11,5 +11,7 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 - Initial project scaffolding: parent POM, `avl-core` and `avl-maven-plugin` modules, CI and
   release workflows.
+- `@Layer`, `@Team`, `@Priority`, `@Component` label annotations with method-over-class
+  precedence, and `AvlConfig` for loading `avl.required.labels` / `avl.enforcement`.
 
 [Unreleased]: https://github.com/byreshb/allure-visibility/compare/main...HEAD
