@@ -21,5 +21,7 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - `SuiteAuditor`: static audit of a test source tree for required label coverage, with
   console/JSON/Markdown renderers, tested against a fixture set of test files with known-missing
   labels.
+- `avl-maven-plugin`: `avl:audit` goal wrapping `SuiteAuditor` over `src/test/java`, with
+  `failOnMissing` and `format` parameters, writing a real report under `target/avl/`.
 
 [Unreleased]: https://github.com/byreshb/allure-visibility/compare/main...HEAD

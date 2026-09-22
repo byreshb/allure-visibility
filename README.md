@@ -17,9 +17,10 @@ question without running the suite at all.
 
 ## Status
 
-The four label annotations, `AvlConfig`, the JUnit 5 extension, the TestNG listener and the
-static audit (`SuiteAuditor`) are implemented in `avl-core`. The Maven plugin described above
-isn't implemented yet; this README will fill in as the delivery plan progresses.
+The four label annotations, `AvlConfig`, the JUnit 5 extension, the TestNG listener, the static
+audit (`SuiteAuditor`) and the `avl-maven-plugin` goal are implemented. The `avl-report`
+TypeScript CLI described above isn't implemented yet; this README will fill in as the delivery
+plan progresses.
 
 ## Install
 
@@ -107,6 +108,13 @@ String markdown = new MarkdownAuditReportRenderer().render(report);
 ```
 
 See [docs/audit.md](docs/audit.md).
+
+`avl-maven-plugin` wraps the same audit as the `avl:audit` goal, not bound to any phase by
+default:
+
+```bash
+mvn avl:audit -Davl.format=md > target/avl/audit.md
+```
 
 ## Building and testing
 

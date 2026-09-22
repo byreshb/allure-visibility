@@ -32,5 +32,41 @@ Three `AuditReportRenderer` implementations turn a report into text:
 String markdown = new MarkdownAuditReportRenderer().render(report);
 ```
 
-A Maven goal (`avl:audit`) and a standalone TypeScript CLI that read the same report shape are
-planned; this page will cover them side by side once they land.
+A standalone TypeScript CLI that reads the same report shape is planned; this page will cover it
+alongside the Maven goal below once it lands.
+
+## Maven goal: `avl:audit`
+
+`avl-maven-plugin` wraps `SuiteAuditor` over `src/test/java` as the `avl:audit` goal. It is bound
+to nothing by default — opt it into a phase (typically `verify`) per project:
+
+```xml
+<plugin>
+  <groupId>io.github.byreshb</groupId>
+  <artifactId>avl-maven-plugin</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+  <executions>
+    <execution>
+      <goals>
+        <goal>audit</goal>
+      </goals>
+      <phase>verify</phase>
+    </execution>
+  </executions>
+</plugin>
+```
+
+Parameters:
+
+| Parameter               | Property              | Default    | Meaning |
+| ------------------------ | ---------------------- | ---------- | ------- |
+| `requiredLabels`         | `avl.required.labels`  | `team,layer` | same shape as `AvlConfig`'s key of the same name |
+| `failOnMissing`          | `avl.failOnMissing`    | `false`    | fails the build the same way `avl.enforcement=fail` fails a single test |
+| `format`                 | `avl.format`           | `console`  | `console`, `json` or `md` |
+
+The rendered report is printed to stdout and always written under `target/avl/audit.<ext>`
+(`.txt`, `.json` or `.md`), a real artifact usable in CI regardless of how the goal was invoked:
+
+```bash
+mvn avl:audit -Davl.format=md > target/avl/audit.md
+```
