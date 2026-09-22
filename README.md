@@ -17,9 +17,50 @@ question without running the suite at all.
 
 ## Status
 
-The four label annotations and `AvlConfig` are implemented in `avl-core`. The JUnit 5 extension,
-TestNG listener, static audit and Maven plugin described above aren't implemented yet; this
+The four label annotations, `AvlConfig` and the JUnit 5 extension are implemented in `avl-core`.
+The TestNG listener, static audit and Maven plugin described above aren't implemented yet; this
 README will fill in as the delivery plan progresses.
+
+## Install
+
+Not on Maven Central yet (planned, see [docs/releasing.md](docs/releasing.md)). Until then, build
+and install locally from a checkout:
+
+```bash
+mvn install
+```
+
+```xml
+<dependency>
+  <groupId>io.github.byreshb</groupId>
+  <artifactId>avl-core</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+</dependency>
+```
+
+## Quick start
+
+```java
+@ExtendWith(AllureVisibilityExtension.class)
+class CheckoutApiTest {
+
+  @Layer(TestLayer.API)
+  @Team("payments")
+  @Priority(TestPriority.P1)
+  @Component("checkout")
+  @Test
+  void appliesPromoCodeToTotal() { /* ... */ }
+}
+```
+
+```properties
+# allure.properties
+allure.results.directory=target/allure-results
+avl.required.labels=team,layer
+avl.enforcement=fail
+```
+
+See [docs/junit5.md](docs/junit5.md) for what the extension does on each test.
 
 ## Reference
 

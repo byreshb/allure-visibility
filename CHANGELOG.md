@@ -13,5 +13,7 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   release workflows.
 - `@Layer`, `@Team`, `@Priority`, `@Component` label annotations with method-over-class
   precedence, and `AvlConfig` for loading `avl.required.labels` / `avl.enforcement`.
+- `AllureVisibilityExtension` (JUnit 5): attaches resolved labels to each test's Allure result
+  and enforces `AvlConfig`'s warn/fail policy, proven against real Allure result JSON.
 
 [Unreleased]: https://github.com/byreshb/allure-visibility/compare/main...HEAD

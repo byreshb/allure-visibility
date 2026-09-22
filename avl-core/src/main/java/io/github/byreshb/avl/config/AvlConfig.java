@@ -79,17 +79,26 @@ public final class AvlConfig {
     return enforcement;
   }
 
-  static AvlConfig load() {
-    return load(System.getProperties(), loadClasspathProperties(AvlConfig.class.getClassLoader()));
-  }
-
-  static AvlConfig load(Properties systemProperties, Properties classpathProperties) {
+  /**
+   * Builds a configuration from the given properties, independently of the JVM-wide singleton
+   * returned by {@link #getInstance()}. Each key is still resolved system-property-first,
+   * classpath-second, default-third.
+   *
+   * @param systemProperties consulted first for each {@code avl.*} key
+   * @param classpathProperties consulted second for each {@code avl.*} key
+   * @return a new, independent configuration instance
+   */
+  public static AvlConfig load(Properties systemProperties, Properties classpathProperties) {
     Set<String> requiredLabels =
         parseRequiredLabels(
             resolveValue(REQUIRED_LABELS_KEY, systemProperties, classpathProperties));
     Enforcement enforcement =
         parseEnforcement(resolveValue(ENFORCEMENT_KEY, systemProperties, classpathProperties));
     return new AvlConfig(requiredLabels, enforcement);
+  }
+
+  private static AvlConfig load() {
+    return load(System.getProperties(), loadClasspathProperties(AvlConfig.class.getClassLoader()));
   }
 
   static Properties loadClasspathProperties(ClassLoader classLoader) {
