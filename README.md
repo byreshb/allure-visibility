@@ -17,9 +17,9 @@ question without running the suite at all.
 
 ## Status
 
-The four label annotations, `AvlConfig` and the JUnit 5 extension are implemented in `avl-core`.
-The TestNG listener, static audit and Maven plugin described above aren't implemented yet; this
-README will fill in as the delivery plan progresses.
+The four label annotations, `AvlConfig`, the JUnit 5 extension and the TestNG listener are
+implemented in `avl-core`. The static audit and Maven plugin described above aren't implemented
+yet; this README will fill in as the delivery plan progresses.
 
 ## Install
 
@@ -61,6 +61,23 @@ avl.enforcement=fail
 ```
 
 See [docs/junit5.md](docs/junit5.md) for what the extension does on each test.
+
+TestNG uses the same annotations and the same `AvlConfig` policy, through
+`AllureVisibilityListener`:
+
+```java
+@Listeners(AllureVisibilityListener.class)
+public class CheckoutApiTest {
+
+  @Layer(TestLayer.API)
+  @Team("payments")
+  @Test
+  public void appliesPromoCodeToTotal() { /* ... */ }
+}
+```
+
+See [docs/testng.md](docs/testng.md), including a real, checkable difference from JUnit 5: TestNG
+loads `ServiceLoader`-declared listeners automatically, with no opt-in flag.
 
 ## Reference
 

@@ -15,5 +15,8 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   precedence, and `AvlConfig` for loading `avl.required.labels` / `avl.enforcement`.
 - `AllureVisibilityExtension` (JUnit 5): attaches resolved labels to each test's Allure result
   and enforces `AvlConfig`'s warn/fail policy, proven against real Allure result JSON.
+- `AllureVisibilityListener` (TestNG): same label attachment and enforcement, registered via
+  `ServiceLoader` autodetection (no opt-in flag, unlike the JUnit 5 module), proven against real
+  Allure result JSON.
 
 [Unreleased]: https://github.com/byreshb/allure-visibility/compare/main...HEAD
