@@ -17,9 +17,9 @@ question without running the suite at all.
 
 ## Status
 
-The four label annotations, `AvlConfig`, the JUnit 5 extension and the TestNG listener are
-implemented in `avl-core`. The static audit and Maven plugin described above aren't implemented
-yet; this README will fill in as the delivery plan progresses.
+The four label annotations, `AvlConfig`, the JUnit 5 extension, the TestNG listener and the
+static audit (`SuiteAuditor`) are implemented in `avl-core`. The Maven plugin described above
+isn't implemented yet; this README will fill in as the delivery plan progresses.
 
 ## Install
 
@@ -97,6 +97,16 @@ priority is business urgency. See [docs/design.md](docs/design.md) for why.
 
 Configuration (`avl.required.labels`, `avl.enforcement`) is documented in
 [docs/configuration.md](docs/configuration.md).
+
+`SuiteAuditor` answers the coverage question statically, without running the suite:
+
+```java
+SuiteAuditor auditor = new DefaultSuiteAuditor();
+AuditReport report = auditor.audit(Path.of("src/test/java"), Set.of("team", "layer"));
+String markdown = new MarkdownAuditReportRenderer().render(report);
+```
+
+See [docs/audit.md](docs/audit.md).
 
 ## Building and testing
 

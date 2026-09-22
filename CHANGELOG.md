@@ -18,5 +18,8 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - `AllureVisibilityListener` (TestNG): same label attachment and enforcement, registered via
   `ServiceLoader` autodetection (no opt-in flag, unlike the JUnit 5 module), proven against real
   Allure result JSON.
+- `SuiteAuditor`: static audit of a test source tree for required label coverage, with
+  console/JSON/Markdown renderers, tested against a fixture set of test files with known-missing
+  labels.
 
 [Unreleased]: https://github.com/byreshb/allure-visibility/compare/main...HEAD
