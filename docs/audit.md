@@ -41,7 +41,7 @@ to nothing by default — opt it into a phase (typically `verify`) per project:
 <plugin>
   <groupId>io.github.byreshb</groupId>
   <artifactId>avl-maven-plugin</artifactId>
-  <version>1.0.0</version>
+  <version>1.1.0</version>
   <executions>
     <execution>
       <goals>
