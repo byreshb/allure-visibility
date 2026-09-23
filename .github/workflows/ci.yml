@@ -39,3 +39,23 @@ jobs:
           path: |
             **/target/*.txt
             **/target/*.log
+
+  node:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: avl-report
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: avl-report/package-lock.json
+
+      - run: npm ci
+
+      - run: npm run check
+
+      - run: npm test

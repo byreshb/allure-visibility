@@ -7,6 +7,14 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-09-22
+
+### Added
+
+- `avl-report`: `allure-visibility-report` TypeScript CLI reading real Allure results and
+  printing a compliance summary (console/JSON/Markdown), agreeing with `AvlConfig` on
+  `avl.required.labels` via `--config`.
+
 ## [1.0.0] - 2026-09-22
 
 ### Added
@@ -26,5 +34,6 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - `avl-maven-plugin`: `avl:audit` goal wrapping `SuiteAuditor` over `src/test/java`, with
   `failOnMissing` and `format` parameters, writing a real report under `target/avl/`.
 
-[Unreleased]: https://github.com/byreshb/allure-visibility/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/byreshb/allure-visibility/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/byreshb/allure-visibility/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/byreshb/allure-visibility/releases/tag/v1.0.0

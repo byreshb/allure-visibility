@@ -32,9 +32,6 @@ Three `AuditReportRenderer` implementations turn a report into text:
 String markdown = new MarkdownAuditReportRenderer().render(report);
 ```
 
-A standalone TypeScript CLI that reads the same report shape is planned; this page will cover it
-alongside the Maven goal below once it lands.
-
 ## Maven goal: `avl:audit`
 
 `avl-maven-plugin` wraps `SuiteAuditor` over `src/test/java` as the `avl:audit` goal. It is bound
@@ -70,3 +67,28 @@ The rendered report is printed to stdout and always written under `target/avl/au
 ```bash
 mvn avl:audit -Davl.format=md > target/avl/audit.md
 ```
+
+## TypeScript CLI: `allure-visibility-report`
+
+`avl-maven-plugin` and `SuiteAuditor` answer the coverage question statically, from source, before
+anything runs. `avl-report`'s `allure-visibility-report` CLI answers the same shape of question
+the other way around: it reads the Allure results a run already produced (the standard
+`*-result.json` files) and reports on the labels that actually made it into the report, rather
+than on what the source declares.
+
+```bash
+npx allure-visibility-report target/allure-results
+npx allure-visibility-report target/allure-results --format md --config allure.properties
+```
+
+Both readers agree on what "required" means: `allure-visibility-report`'s `--config` flag points
+at the same `allure.properties` file and reads the same `avl.required.labels` key `AvlConfig`
+reads on the Java side, and falls back to the same `team,layer` default when it isn't set. See
+[avl-report/README.md](../avl-report/README.md) for the full flag reference.
+
+| | `SuiteAuditor` / `avl:audit` | `allure-visibility-report` |
+| --- | --- | --- |
+| Source of truth | test source files | Allure result JSON |
+| When it runs | before (or without) running tests | after a run has produced results |
+| Output | console / JSON / Markdown | console (colored) / JSON / Markdown |
+| Finds | tests missing a label, by file | tests missing a label, by team/layer breakdown |

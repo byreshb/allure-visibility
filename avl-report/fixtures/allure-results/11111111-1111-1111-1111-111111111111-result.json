@@ -1,0 +1,17 @@
+{
+  "uuid": "11111111-1111-1111-1111-111111111111",
+  "historyId": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "fullName": "sample.CheckoutApiTest.appliesPromoCodeToTotal",
+  "labels": [
+    { "name": "layer", "value": "API" },
+    { "name": "team", "value": "payments" }
+  ],
+  "name": "appliesPromoCodeToTotal",
+  "status": "passed",
+  "stage": "finished",
+  "steps": [],
+  "attachments": [],
+  "parameters": [],
+  "start": 1758000000000,
+  "stop": 1758000000010
+}

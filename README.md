@@ -17,10 +17,9 @@ question without running the suite at all.
 
 ## Status
 
-The four label annotations, `AvlConfig`, the JUnit 5 extension, the TestNG listener, the static
-audit (`SuiteAuditor`) and the `avl-maven-plugin` goal are implemented. The `avl-report`
-TypeScript CLI described above isn't implemented yet; this README will fill in as the delivery
-plan progresses.
+All of the above is implemented: the four label annotations, `AvlConfig`, the JUnit 5 extension,
+the TestNG listener, the static audit (`SuiteAuditor`), the `avl-maven-plugin` goal, and the
+`avl-report` TypeScript CLI.
 
 ## Install
 
@@ -116,7 +115,18 @@ default:
 mvn avl:audit -Davl.format=md > target/avl/audit.md
 ```
 
+`allure-visibility-report` reads real Allure results after a run and prints the same shape of
+compliance summary:
+
+```bash
+npx allure-visibility-report target/allure-results --format md
+```
+
+See [avl-report/README.md](avl-report/README.md) and [docs/audit.md](docs/audit.md#typescript-cli-allure-visibility-report).
+
 ## Building and testing
+
+Java (from the repo root):
 
 ```bash
 mvn test               # run the test suite
@@ -125,10 +135,18 @@ mvn spotless:check      # verify formatting without changing files
 mvn javadoc:javadoc     # generate Javadoc
 ```
 
+TypeScript (from `avl-report/`):
+
+```bash
+npm test      # run the test suite with coverage
+npm run check # tsc --noEmit && eslint . && prettier --check .
+```
+
 ## Continuous integration
 
-Every push and pull request to `main` runs `mvn spotless:check` and `mvn verify` via GitHub
-Actions (see the badge above). Surefire reports are uploaded as build artifacts on every run.
+Every push and pull request to `main` runs two independent jobs via GitHub Actions (see the
+badge above): `java` (`mvn spotless:check` and `mvn verify`, with Surefire reports uploaded as
+build artifacts) and `node` (`npm run check` and `npm test` in `avl-report/`).
 
 ## Releasing
 

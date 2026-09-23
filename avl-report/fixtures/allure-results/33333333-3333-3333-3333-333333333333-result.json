@@ -1,0 +1,14 @@
+{
+  "uuid": "33333333-3333-3333-3333-333333333333",
+  "historyId": "cccccccccccccccccccccccccccccccc",
+  "fullName": "sample.BillingExportTest.missingLayer",
+  "labels": [{ "name": "team", "value": "platform" }],
+  "name": "missingLayer",
+  "status": "broken",
+  "stage": "finished",
+  "steps": [],
+  "attachments": [],
+  "parameters": [],
+  "start": 1758000000040,
+  "stop": 1758000000050
+}

@@ -27,7 +27,9 @@ the [README](../README.md#install)).
 
 ## `avl-report` (npm)
 
-`avl-report` (the TypeScript CLI, not yet built — see the delivery plan) is versioned in
-lockstep with the Java modules and released from the same `vX.Y.Z` tag. Publishing it to npm is
-planned but not yet done; this section will cover the `npm publish` step once that package
-exists.
+`avl-report`'s `package.json` version is kept in lockstep with the Java modules' pom version and
+released from the same `vX.Y.Z` tag: bump it in the same "Release X.Y.Z" commit as step 2 above.
+
+**Status: not done.** Publishing to npm (`npm publish` from `avl-report/`, with an npm account
+and an access token configured in CI) is planned but not yet set up. Until it is, run it from a
+checkout (see [avl-report/README.md](../avl-report/README.md#install)).

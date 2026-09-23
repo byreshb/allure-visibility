@@ -1,0 +1,42 @@
+{
+  "name": "allure-visibility-report",
+  "version": "1.1.0",
+  "description": "Standalone compliance report CLI for allure-visibility: reads Allure results and summarizes required-label coverage.",
+  "type": "module",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/byreshb/allure-visibility.git",
+    "directory": "avl-report"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "bin": {
+    "allure-visibility-report": "./dist/cli.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run --coverage",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "check": "tsc --noEmit && eslint . && prettier --check ."
+  },
+  "dependencies": {
+    "cli-table3": "0.6.5",
+    "picocolors": "1.1.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "@types/node": "22.20.4",
+    "@vitest/coverage-v8": "5.0.1",
+    "eslint": "10.11.0",
+    "prettier": "3.9.8",
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.70.1",
+    "vitest": "5.0.1"
+  }
+}

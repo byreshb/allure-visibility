@@ -1,0 +1,14 @@
+{
+  "uuid": "22222222-2222-2222-2222-222222222222",
+  "historyId": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "fullName": "sample.CheckoutApiTest.missingTeam",
+  "labels": [{ "name": "layer", "value": "UNIT" }],
+  "name": "missingTeam",
+  "status": "passed",
+  "stage": "finished",
+  "steps": [],
+  "attachments": [],
+  "parameters": [],
+  "start": 1758000000020,
+  "stop": 1758000000030
+}
